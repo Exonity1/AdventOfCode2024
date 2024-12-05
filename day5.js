@@ -69,11 +69,9 @@ function a(filePath) {
             }
         }
 
-        // Check if topological sort matches the update order
         return JSON.stringify(topoSorted) === JSON.stringify(update);
     }
 
-    // Compute the middle pages for valid updates
     let middleSum = 0;
     for (const update of updates) {
         if (isValidOrder(update, graph)) {
@@ -89,7 +87,6 @@ function b(filePath) {
     const data = fs.readFileSync(filePath, "utf8");
     const lines = data.split("\n");
 
-    // Separate ordering rules and updates
     const orderingRules = [];
     const updates = [];
     let inUpdatesSection = false;
@@ -106,7 +103,6 @@ function b(filePath) {
         }
     }
 
-    // Parse ordering rules into a graph
     const graph = {};
     for (const rule of orderingRules) {
         const [x, y] = rule.split("|").map(Number);
@@ -114,12 +110,10 @@ function b(filePath) {
         graph[x].add(y);
     }
 
-    // Function to topologically sort an update based on the rules
     function topologicalSort(update) {
         const relevantGraph = {};
         const inDegree = {};
 
-        // Build a relevant subgraph for the update
         for (const node of update) {
             if (graph[node]) {
                 relevantGraph[node] = new Set();
@@ -133,7 +127,6 @@ function b(filePath) {
             if (!(node in inDegree)) inDegree[node] = 0;
         }
 
-        // Perform topological sort
         const sorted = [];
         const zeroInDegree = [];
         for (const node of update) {
@@ -154,13 +147,11 @@ function b(filePath) {
         return sorted;
     }
 
-    // Check if an update is valid
     function isValidOrder(update) {
         const sorted = topologicalSort(update);
         return sorted.length === update.length && sorted.every((val, idx) => val === update[idx]);
     }
 
-    // Correct and sum middle pages of invalid updates
     let middleSum = 0;
     for (const update of updates) {
         if (!isValidOrder(update)) {
@@ -173,6 +164,6 @@ function b(filePath) {
     console.log(middleSum);
 }
 
-//a(filePath);
+a(filePath);
 b(filePath);
 

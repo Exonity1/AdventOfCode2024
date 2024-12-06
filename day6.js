@@ -24,7 +24,7 @@ function a(filePath) {
                 guard.x = r;
                 guard.y = c;
                 guard.dir = "^>v<".indexOf(map[r][c]);
-                map[r][c] = "X"; // Mark the initial position as visited
+                map[r][c] = "X"; 
             }
         }
     }
@@ -84,7 +84,7 @@ function b(filePath) {
         }
     }
 
-    
+
 
     const start = { x: guard.x, y: guard.y };
 
@@ -111,7 +111,7 @@ function b(filePath) {
                 dir = (dir + 1) % 4;
             } else {
                 x = nx;
-                y = ny; // Move forward
+                y = ny; 
             }
         }
     }
@@ -121,7 +121,6 @@ function b(filePath) {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             if (map[r][c] === "." && (r !== start.x || c !== start.y)) {
-                // Make a copy of the map and place an obstruction
                 const testMap = map.map(row => row.slice());
                 testMap[r][c] = "#";
 

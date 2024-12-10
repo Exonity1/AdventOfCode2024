@@ -70,5 +70,5 @@ function countSafeReportsWithDampener(filePath) {
 
 
 
-console.log(`Safe reports: ${countSafeReports(filePath)}`);
-console.log(`Safe reports with Problem Dampener: ${countSafeReportsWithDampener(filePath)}`);
+console.log(countSafeReports(filePath));
+console.log(countSafeReportsWithDampener(filePath));

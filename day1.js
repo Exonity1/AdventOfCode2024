@@ -52,8 +52,8 @@ function calculateSimilarityScore(filePath) {
 const filePath = './day1_input.txt'; 
 
 const similarityScore = calculateSimilarityScore(filePath);
-console.log("Similarity Score:", similarityScore);
+console.log(similarityScore);
 
 
 const totalDistance = calculateTotalDistance(filePath);
-console.log("Total Distance:", totalDistance);
+console.log(totalDistance);

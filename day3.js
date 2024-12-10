@@ -47,9 +47,9 @@ function b(filePath) {
         }
     }
 
-    console.log("Total Sum:", totalSum);
+    console.log(totalSum);
     return totalSum;
 }
 
-b(filePath)
-//a(filePath);
+a(filePath);
+b(filePath);
